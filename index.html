@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIGHTMARE ACADEMY - Horror Quiz Game</title>
+    <link rel="stylesheet" href="css/style.css?v=17">
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Jolly+Lodger&family=Nosifer&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="error-log" style="position:fixed; top:0; left:0; width:100%; min-height:50px; background:rgba(255,0,0,0.8); color:white; font-size:16px; z-index:999999; display:none; padding:10px;"></div>
+    <script>
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+            var log = document.getElementById('error-log');
+            log.style.display = 'block';
+            log.innerHTML += 'ERROR: ' + msg + '<br>URL: ' + url + ' Line: ' + lineNo + ':' + columnNo + '<br>';
+            return false;
+        };
+        document.addEventListener('DOMContentLoaded', () => { setTimeout(() => { if (!window.startGame) { document.getElementById('error-log').style.display='block'; document.getElementById('error-log').innerHTML += 'ERROR: startGame is undefined. js/app.js failed to execute.<br>'; } }, 1000); });
+    </script>
+    <!-- Enhanced Background Layers -->
+    <div id="fog-layer"></div>
+    <div id="souls-container"></div>
+    
+    <div id="noise-overlay"></div>
+    <div id="vignette"></div>
+
+    <!-- BACKGROUND VIDEO -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="video/bg.mp4" type="video/mp4">
+    </video>
+
+    <div id="app-container">
+        <!-- GLOBAL HUD -->
+        <div id="global-hud" class="hud hidden">
+            <button class="blood-btn" style="padding: 5px 15px; font-size: 1.2rem; min-width: 120px;" onclick="goBack()">⬅ Back</button>
+            <div class="level-indicator">Level <span id="hud-level">1</span></div>
+            <div class="lives-container">
+                <span id="lives-display">Remaining: 3 | Lost: 0</span>
+            </div>
+            <button id="home-btn" class="blood-btn hidden" style="padding: 5px 15px; font-size: 1.2rem; min-width: 120px;" onclick="returnToHome()">Menu</button>
+        </div>
+
+        <!-- HORROR BGM AUDIO -->
+        <audio id="horror-bgm" src="audio/bgm.mp3" loop></audio>
+        
+        <!-- LOGIN SCREEN -->
+        <div id="login-screen" class="screen active">
+            <h1 class="glitch" data-text="NIGHTMARE ACADEMY">NIGHTMARE ACADEMY</h1>
+            <p class="subtitle">Choose your Nightmare</p>
+            <div class="login-options" style="flex-direction: column;">
+                <select id="domain-select" class="blood-btn" style="background:rgba(0,0,0,0.95); color:#ffffff; text-shadow: none; border: 2px solid var(--blood-red); font-size: 1.2rem; cursor: pointer; text-align: center; padding: 10px;">
+                    <option value="web" style="background:#000; color:#fff;">Web Technologies</option>
+                    <option value="db" style="background:#000; color:#fff;">Database Systems</option>
+                    <option value="net" style="background:#000; color:#fff;">Computer Networks</option>
+                    <option value="os" style="background:#000; color:#fff;">Operating Systems</option>
+                    <option value="ai" style="background:#000; color:#fff;">Artificial Intelligence</option>
+                </select>
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button class="blood-btn" onclick="startGame('easy')" style="font-size: 1.1rem; padding: 10px;">Easy</button>
+                    <button class="blood-btn" onclick="startGame('medium')" style="font-size: 1.1rem; padding: 10px;">Medium</button>
+                    <button class="blood-btn" onclick="startGame('hard')" style="font-size: 1.1rem; padding: 10px;">Hard</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TRANSITION / JUMP SCARE SCREEN -->
+        <div id="scare-screen" class="screen hidden">
+            <div class="scare-face"></div>
+        </div>
+
+        <!-- LEVEL INTRO SCREEN -->
+        <div id="intro-screen" class="screen hidden">
+            <h2 id="intro-level-title" class="blood-text">Level 1</h2>
+            <div class="ghost-container">
+                <img id="intro-ghost-img" src="" alt="Ghost" class="ghost-img">
+            </div>
+            <p id="intro-text" class="spooky-text">I am the guardian of this knowledge...</p>
+            <div style="display: flex; gap: 20px;">
+                <button class="blood-btn dark" onclick="goBack()">⬅ Back</button>
+                <button class="blood-btn dark" onclick="startPuzzle()">Next ➔</button>
+            </div>
+        </div>
+
+        <!-- PUZZLE SCREEN -->
+        <div id="puzzle-screen" class="screen hidden">
+            <h2 class="blood-text">Unveil the Anomaly</h2>
+            <p id="puzzle-instruction-text" class="spooky-text" style="font-size: 1.5rem; max-width: 600px; text-shadow: 1px 1px 3px #000;">
+                Swap the fragmented pieces to reveal the anomaly before it asks its question...
+            </p>
+            <div class="puzzle-container" style="display: flex; gap: 40px; justify-content: center; align-items: flex-start; margin-top: 20px;">
+                <div id="puzzle-grid" class="puzzle-grid">
+                    <!-- Tiles injected via JS -->
+                </div>
+                <div id="puzzle-reference" style="background: rgba(0,0,0,0.85); padding: 15px; border-radius: 10px; border: 1px solid var(--blood-red);">
+                    <h3 class="blood-text" style="margin-top:0; font-size: 1.2rem;">Reference</h3>
+                    <img id="puzzle-ref-img" src="" style="width: 150px; height: 150px; border: 2px solid var(--blood-red); opacity: 0.8; object-fit: cover;">
+                </div>
+            </div>
+            <button class="blood-btn" style="margin-top:20px; background: rgba(0,0,0,0.8);" onclick="goBack()">⬅ Back</button>
+        </div>
+
+        <!-- QUIZ SCREEN -->
+        <div id="quiz-screen" class="screen hidden">
+            
+            <div class="ghost-bg-container">
+                <img id="quiz-ghost-img" src="" alt="Ghost Background" class="ghost-bg">
+            </div>
+
+            <div class="quiz-container">
+                <div class="question-box">
+                    <p id="question-text">Question goes here?</p>
+                </div>
+                <div class="options-grid" id="options-container">
+                    <!-- Options injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON SCREEN -->
+        <div id="lesson-screen" class="screen hidden">
+            <h2 class="glitch" id="lesson-title" data-text="YOU FAILED">YOU FAILED</h2>
+            <div class="ghost-container close-up">
+                <img id="lesson-ghost-img" src="" alt="Angry Ghost" class="ghost-img angry">
+            </div>
+            <div class="lesson-box">
+                <h3 class="blood-text" style="margin: 0 0 10px 0; font-size: 2rem; text-shadow: 2px 2px 4px #000;">Listen to my knowledge, mortal...</h3>
+                <p id="lesson-text" class="spooky-text" style="font-size: 1.8rem; padding: 10px; line-height: 1.4; text-shadow: 1px 1px 3px #000;">Lesson explanation goes here.</p>
+            </div>
+            <button class="blood-btn" onclick="handleLessonConfirm()">I Understand. Let me retry.</button>
+        </div>
+
+        <!-- WIN SCREEN -->
+        <div id="win-screen" class="screen hidden">
+            <h1 class="glitch" data-text="YOU SURVIVED">YOU SURVIVED</h1>
+            <p class="spooky-text">For now...</p>
+            <button class="blood-btn" onclick="location.reload()">Escape</button>
+        </div>
+
+    </div>
+
+    <script src="js/data/web_questions.js"></script>
+    <script src="js/data/db_questions.js"></script>
+    <script src="js/data/net_questions.js"></script>
+    <script src="js/data/os_questions.js"></script>
+    <script src="js/data/ai_questions.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/app.js?v=17"></script>
+</body>
+</html>
