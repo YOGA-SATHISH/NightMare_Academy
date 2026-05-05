@@ -1,0 +1,53 @@
+const webQuestions = {
+    easy: [
+        { q: "What does HTTP stand for?", opts: ["HyperText Transfer Protocol", "HighText Transfer", "Hyper Transfer Text", "HyperText Transport Protocol"], ans: 0, lesson: "HTTP is the foundation of data communication." },
+        { q: "Which HTML tag is used for the largest heading?", opts: ["<heading>", "<h6>", "<h1>", "<head>"], ans: 2, lesson: "<h1> screams the loudest... It is the largest heading." },
+        { q: "What does CSS stand for?", opts: ["Creative Style Sheets", "Cascading Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"], ans: 1, lesson: "Cascading Style Sheets... rules bleeding down into one another." },
+        { q: "What is the correct HTML element for inserting a line break?", opts: ["<break>", "<br>", "<lb>", "<newline>"], ans: 1, lesson: "The <br> tag forces a violent fracture in the text flow." },
+        { q: "Choose the correct HTML element to define important text", opts: ["<strong>", "<b>", "<important>", "<i>"], ans: 0, lesson: "<strong> ensures the words echo with desperate weight." },
+        { q: "Choose the correct HTML element to define emphasized text", opts: ["<i>", "<italic>", "<em>", "<strong>"], ans: 2, lesson: "<em> places cursed emphasis upon the chosen words." },
+        { q: "What is the correct HTML for creating a hyperlink?", opts: ["<a>http://www.w3schools.com</a>", "<a name='http://www.w3schools.com'>W3Schools.com</a>", "<a href='http://www.w3schools.com'>W3Schools</a>", "<a url='http://www.w3schools.com'>W3Schools.com</a>"], ans: 2, lesson: "The href attribute chains the text to an external nightmare." },
+        { q: "Which character is used to indicate an end tag?", opts: ["*", "/", "<", "^"], ans: 1, lesson: "The forward slash / serves as the guillotine for the tag." },
+        { q: "How can you make a numbered list?", opts: ["<ul>", "<dl>", "<list>", "<ol>"], ans: 3, lesson: "Ordered List <ol> structures the chaos into numbering." },
+        { q: "How can you make a bulleted list?", opts: ["<ol>", "<list>", "<ul>", "<dl>"], ans: 2, lesson: "Unordered List <ul> scatters points into the abyss." },
+        { q: "What is the correct HTML for inserting an image?", opts: ["<image src='image.gif' alt='MyImage'>", "<img src='image.gif' alt='MyImage'>", "<img alt='MyImage'>image.gif</img>", "<img href='image.gif' alt='MyImage'>"], ans: 1, lesson: "<img> summons visual apparitions into the document." },
+        { q: "Which HTML attribute specifies an alternate text for an image?", opts: ["alt", "title", "src", "longdesc"], ans: 0, lesson: "The 'alt' text speaks for the blind and broken images." },
+        { q: "Which doctype is correct for HTML5?", opts: ["<!DOCTYPE html>", "<!DOCTYPE HTML5>", "<!DOCTYPE html PUBLIC>", "<!DOCTYPE html>"], ans: 0, lesson: "<!DOCTYPE html> binds the page to modern standards." },
+        { q: "Which HTML element is used to specify a footer for a document or section?", opts: ["<bottom>", "<footer>", "<section>", "<foot>"], ans: 1, lesson: "<footer> grounds the document at its darkest depths." },
+        { q: "What is the correct HTML element for playing video files?", opts: ["<media>", "<movie>", "<video>", "<playback>"], ans: 2, lesson: "<video> traps moving shadows within the viewport." }
+    ],
+    medium: [
+        { q: "What does HTML stand for?", opts: ["Hyper Text Markup Language", "Hyperlinks and Text", "Home Tool Markup", "Hyper Text Multi Language"], ans: 0, lesson: "HTML builds the skeleton... Hyper Text Markup Language." },
+        { q: "Which CSS property controls text size?", opts: ["text-style", "font-style", "text-size", "font-size"], ans: 3, lesson: "font-size dictates how large the whispers grow." },
+        { q: "How do you select an element with id 'demo' in CSS?", opts: [".demo", "#demo", "demo", "*demo"], ans: 1, lesson: "The '#' symbol isolates the unique id 'demo'." },
+        { q: "In JavaScript, how do you write 'Hello World' in an alert box?", opts: ["msgBox('Hello World');", "alertBox('Hello World');", "msg('Hello World');", "alert('Hello World');"], ans: 3, lesson: "alert() forces a message upon the user's screen." },
+        { q: "How do you create a function in JavaScript?", opts: ["function = myFunction()", "function myFunction()", "function:myFunction()", "create myFunction()"], ans: 1, lesson: "function myFunction() defines the beginning of a twisted routine." },
+        { q: "Which operator is used to assign a value to a variable?", opts: ["*", "-", "=", "x"], ans: 2, lesson: "The '=' sign establishes equivalence." },
+        { q: "What is the correct HTML for referring to an external style sheet?", opts: ["<style src='mystyle.css'>", "<stylesheet>mystyle.css</stylesheet>", "<link rel='stylesheet' type='text/css' href='mystyle.css'>", "<link src='mystyle.css'>"], ans: 2, lesson: "<link href='...'> drags the external stylesheet into existence." },
+        { q: "Where is the correct place to insert a JavaScript?", opts: ["The <body> section", "The <head> section", "Both", "Neither"], ans: 2, lesson: "Scripts can hide within both the <head> and the <body>." },
+        { q: "How does a FOR loop start?", opts: ["for i = 1 to 5", "for (i = 0; i <= 5)", "for (i = 0; i <= 5; i++)", "for (i <= 5; i++)"], ans: 2, lesson: "A loop begins with initialization, condition, and painful iteration." },
+        { q: "What is the correct way to write a JavaScript array?", opts: ["var txt = new Array:1=('A'),2=('B')", "var txt = ['A', 'B']", "var txt = (1:'A', 2:'B')", "var txt = 'A', 'B'"], ans: 1, lesson: "Square brackets encapsulate the cursed elements of an array." },
+        { q: "Which event occurs when the user clicks on an HTML element?", opts: ["onmouseclick", "onchange", "onclick", "onmouseover"], ans: 2, lesson: "onclick triggers the fatal trap." },
+        { q: "How do you declare a JavaScript variable?", opts: ["variable carName;", "var carName;", "v carName;", "declare carName;"], ans: 1, lesson: "var, let, or const binds a name to the void." },
+        { q: "Inside which HTML element do we put the JavaScript?", opts: ["<js>", "<scripting>", "<script>", "<javascript>"], ans: 2, lesson: "<script> tags act as the vessel for our logical demons." },
+        { q: "How do you write a conditional statement in JavaScript?", opts: ["if i = 5 then", "if i == 5 then", "if (i == 5)", "if i = 5"], ans: 2, lesson: "Parentheses bind the conditional logic into a restrictive cell." },
+        { q: "How can you add a comment in JavaScript?", opts: ["<!-- This is a comment -->", "'This is a comment", "// This is a comment", "** This is a comment"], ans: 2, lesson: "Double slashes silence the remaining text on the line." }
+    ],
+    hard: [
+        { q: "What does the HTML <canvas> element do?", opts: ["Display database structures", "Draw graphics, on the fly, via scripting", "Create a static background image", "Manipulate the DOM"], ans: 1, lesson: "The canvas allows pure chaotic drawing directly onto the page." },
+        { q: "What is CORS?", opts: ["Cascading Object Reference Style", "Cross-Origin Resource Sharing", "Central Output Redirection Server", "Computed Origin Render Screen"], ans: 1, lesson: "CORS determines which foreign entities may access your resources." },
+        { q: "How do you check if a variable `arr` is an Array in ES6?", opts: ["typeof arr == 'array'", "Array.isArray(arr)", "arr instanceof Array", "Both isArray() and instanceof"], ans: 3, lesson: "Multiple spells exist to reveal if it is an array in hiding." },
+        { q: "What does DOM stand for?", opts: ["Document Object Model", "Dynamic Output Mechanism", "Data Origin Manager", "Digital Object Matrix"], ans: 0, lesson: "The Document Object Model structure the web page as a living tree." },
+        { q: "In JavaScript, what will `typeof null` return?", opts: ["'null'", "'undefined'", "'object'", "'boolean'"], ans: 2, lesson: "An ancient javascript curse makes null masquerade as an object." },
+        { q: "What is a Closure in JavaScript?", opts: ["Stopping execution", "A function having access to its parent scope", "Ending a loop", "A closed database connection"], ans: 1, lesson: "Closures preserve the dying memory of their parent's environment." },
+        { q: "Which array method creates a new array with the results of calling a function for every array element?", opts: ["map()", "filter()", "reduce()", "forEach()"], ans: 0, lesson: "The map() function transforms every soul traversing its path." },
+        { q: "What is Event Bubbling?", opts: ["Events trigger from child to parent", "Events trigger from parent to child", "Multiple events merging", "Events crashing the stack"], ans: 0, lesson: "Events bubble up from the depths of the DOM tree to the surface." },
+        { q: "What is a Promise in JavaScript?", opts: ["An object representing eventual completion", "A guarantee of zero bugs", "A synchronous loop", "A locked variable"], ans: 0, lesson: "Promises hold the fragile hope of future resolution or terrible rejection." },
+        { q: "What does the `this` keyword refer to in JavaScript?", opts: ["The current document", "The window object", "The element clicked", "Depends on execution context"], ans: 3, lesson: "The identity of 'this' shifts menacingly depending on how it was summoned." },
+        { q: "What is hoisting in JavaScript?", opts: ["Lifting variables to the top", "Connecting to a cloud server", "Increasing performance", "Deleting unused variables"], ans: 0, lesson: "Hoisting violently pulls declarations to the absolute top of the script." },
+        { q: "Which CSS pseudo-class is used to select an element when you hover it with a mouse?", opts: [":onhover", ":hover", ":mouse-over", ":active"], ans: 1, lesson: "The :hover state activates when a cursor silently stalks an element." },
+        { q: "In CSS Flexbox, what does `justify-content: space-between;` do?", opts: ["Centers items", "Evenly distributes items, first at start, last at end", "Stacks items vertically", "Hides the extra space"], ans: 1, lesson: "It violently pushes the elements apart to the far edges." },
+        { q: "What is a Web Socket?", opts: ["A plug for the internet", "A two-way interactive communication session", "A security port", "A caching system"], ans: 1, lesson: "WebSockets leave the connection bleeding open for infinite two-way screams." },
+        { q: "Which command removes local storage data?", opts: ["localStorage.delete()", "localStorage.clear()", "sessionStorage.remove()", "window.localStorage.erase()"], ans: 1, lesson: "clear() wipes away all forgotten memories housed locally." }
+    ]
+};

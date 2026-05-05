@@ -1,0 +1,53 @@
+const netQuestions = {
+    easy: [
+        { q: "What does HTTP stand for?", opts: ["HyperText Transfer Protocol", "HyperText Transmission Protocol", "HyperTrack Transfer Protocol", "HyperText Transfer Package"], ans: 0, lesson: "HyperText Transfer Protocol... transferring whispers over the wire." },
+        { q: "What does IP stand for?", opts: ["Internet Provider", "Internet Protocol", "Internal Protocol", "International Protocol"], ans: 1, lesson: "Internet Protocol specifies how packets navigate the abyss." },
+        { q: "What does WWW stand for?", opts: ["World Wide Web", "World Web Wide", "Wide World Web", "Web World Wide"], ans: 0, lesson: "World Wide Web captures the globe in its interwoven trap." },
+        { q: "Which device forwards data packets between computer networks?", opts: ["Switch", "Hub", "Router", "Modem"], ans: 2, lesson: "A Router acts as the silent director of cross-network traffic." },
+        { q: "What does LAN stand for?", opts: ["Large Area Network", "Local Area Network", "Long Area Network", "Light Area Network"], ans: 1, lesson: "Local Area Network confines the victims within a small geographic space." },
+        { q: "What does WAN stand for?", opts: ["Wide Area Network", "World Area Network", "Wireless Area Network", "Web Area Network"], ans: 0, lesson: "Wide Area Network stretches its tendrils across entire nations." },
+        { q: "What is an IP address?", opts: ["A string of text", "A numerical identifier for a device on a network", "A password", "A web browser"], ans: 1, lesson: "The IP Address is your unique, unhideable coordinate." },
+        { q: "What connects multiple devices forcing them to share bandwidth?", opts: ["Switch", "Router", "Hub", "Gateway"], ans: 2, lesson: "A Hub broadcasts every scream blindly to all connected ears." },
+        { q: "What does VPN stand for?", opts: ["Visual Private Network", "Virtual Public Network", "Virtual Private Network", "Void Personal Network"], ans: 2, lesson: "A VPN attempts to shield you beneath an encrypted tunnel of darkness." },
+        { q: "What does Wi-Fi stand for?", opts: ["Wireless Fidelity", "Wired Fiber", "Wireless Firewall", "It doesn't stand for anything"], ans: 0, lesson: "Wireless Fidelity transmits unseen ghosts through the very air." },
+        { q: "Which tool tests connectivity to another IP?", opts: ["ipconfig", "ping", "tracert", "netstat"], ans: 1, lesson: "ping bounces a signal off the darkness to see if it echoes back." },
+        { q: "What provides power over Ethernet cables?", opts: ["PoE", "RDP", "SSH", "SSL"], ans: 0, lesson: "Power over Ethernet juices the veins with electrical lifeblood." },
+        { q: "What is a URL?", opts: ["Uniform Resource Locator", "Universal Routing Link", "User Request Loader", "United Resource Locator"], ans: 0, lesson: "The Uniform Resource Locator points directly at the desired artifact." },
+        { q: "Which is faster?", opts: ["Coaxial", "Dial-up", "Fiber Optic", "DSL"], ans: 2, lesson: "Fiber Optic transports data at the terrifying speed of light." },
+        { q: "What converts digital signals to analog?", opts: ["Router", "Modem", "Switch", "Hub"], ans: 1, lesson: "The Modem translates pure digital intent into analog waves." }
+    ],
+    medium: [
+        { q: "What is the standard port for HTTP?", opts: ["21", "80", "443", "25"], ans: 1, lesson: "Port 80 lies open to the world." },
+        { q: "What is the standard port for HTTPS?", opts: ["80", "21", "443", "25"], ans: 2, lesson: "Port 443 encrypts the screams using TLS." },
+        { q: "How many layers are in the OSI model?", opts: ["5", "6", "7", "8"], ans: 2, lesson: "7 layers of abstraction hiding the bare metal." },
+        { q: "Which OSI layer ensures reliable data transfer?", opts: ["Network", "Data Link", "Transport", "Physical"], ans: 2, lesson: "The Transport layer guarantees the payload arrives intact." },
+        { q: "What does DNS stand for?", opts: ["Domain Name System", "Dynamic Name Service", "Data Network System", "Domain Network Server"], ans: 0, lesson: "Domain Name System resolves names into numeric coordinates." },
+        { q: "What Protocol is used to send email?", opts: ["POP3", "IMAP", "SMTP", "HTTP"], ans: 2, lesson: "Simple Mail Transfer Protocol dispatches your outgoing messages." },
+        { q: "What protocol is used to securely connect to a remote terminal?", opts: ["Telnet", "SSH", "FTP", "RDP"], ans: 1, lesson: "Secure Shell (SSH) protects your remote keystrokes." },
+        { q: "What topology connects all devices to a central hub?", opts: ["Ring", "Mesh", "Bus", "Star"], ans: 3, lesson: "A Star topology roots everything to one central vulnerability." },
+        { q: "Which protocol resolves IP addresses to MAC addresses?", opts: ["DNS", "DHCP", "ARP", "RARP"], ans: 2, lesson: "Address Resolution Protocol (ARP) finds the physical shadow of an IP." },
+        { q: "What is a subnet mask used for?", opts: ["Hiding IP addresses", "Identifying network vs host portion", "Encrypting data", "Assigning MAC addresses"], ans: 1, lesson: "The mask severs the network ID from the host ID." },
+        { q: "What address is used to loop back to localhost?", opts: ["192.168.1.1", "0.0.0.0", "127.0.0.1", "255.255.255.255"], ans: 2, lesson: "127.0.0.1 faces the mirror back to yourself." },
+        { q: "What is a firewall?", opts: ["A burning wall", "Software/hardware blocking unauthorized access", "A virus", "A network hub"], ans: 1, lesson: "A firewall blocks the demons from entering your port." },
+        { q: "What operates at Layer 2 of the OSI model?", opts: ["Router", "Hub", "Switch", "Gateway"], ans: 2, lesson: "A Switch learns MAC addresses to intelligently forward frames at Layer 2." },
+        { q: "What is an IPv4 address size?", opts: ["16-bit", "32-bit", "64-bit", "128-bit"], ans: 1, lesson: "IPv4 is tightly constrained within a 32-bit architecture." },
+        { q: "What command tracks the route packets take to a destination?", opts: ["ping", "netstat", "ipconfig", "tracert"], ans: 3, lesson: "tracert exposes every router the package bounded across." }
+    ],
+    hard: [
+        { q: "What operates at Layer 3 of the OSI model?", opts: ["Switch", "Hub", "Router", "Repeater"], ans: 2, lesson: "Routers operate at the Network layer, navigating packets via IP." },
+        { q: "What protocol automatically assigns IP addresses?", opts: ["ARP", "NTP", "DNS", "DHCP"], ans: 3, lesson: "Dynamic Host Configuration Protocol leases temporary identities." },
+        { q: "What is the size of an IPv6 address?", opts: ["32-bit", "64-bit", "128-bit", "256-bit"], ans: 2, lesson: "IPv6 uses 128 bits, an incomprehensible vault of addresses." },
+        { q: "Which routing protocol uses Bellman-Ford algorithm?", opts: ["OSPF", "RIP", "BGP", "EIGRP"], ans: 1, lesson: "Routing Information Protocol relies on the slow Bellman-Ford equation." },
+        { q: "What port number does Telnet use?", opts: ["23", "22", "21", "25"], ans: 0, lesson: "Telnet leaves its traffic entirely unencrypted on port 23." },
+        { q: "In the TCP/IP model, what aligns with the OSI Transport layer?", opts: ["Application", "Host-to-Host (Transport)", "Internet", "Network Access"], ans: 1, lesson: "The TCP/IP Host-to-Host layer mirrors the reliability of OSI Layer 4." },
+        { q: "What is BGP?", opts: ["Broadband Gateway Protocol", "Border Gateway Protocol", "Binary Gate Process", "Bridge Group Policy"], ans: 1, lesson: "BGP maintains the very fabric of the internet's core routing." },
+        { q: "What does CSMA/CD stand for?", opts: ["Collision Sense Multiple Access/Collision Detect", "Carrier Sense Multiple Access/Collision Detection", "Carrier Signal Multiple Access", "None of these"], ans: 1, lesson: "CSMA/CD listens closely before injecting packets into the shared ether." },
+        { q: "What happens when a TCP sequence fails to arrive?", opts: ["It ignores it", "It sends an ACK anyway", "It requests retransmission", "Connection drops instantly"], ans: 2, lesson: "TCP refuses to surrender, demanding repeated retransmission of lost fragments." },
+        { q: "What is a VLAN?", opts: ["Visual Local Area Network", "Virtual Local Area Network", "Viral LAN", "Voice LAN"], ans: 1, lesson: "A VLAN splits a single physical switch into isolated logical realms." },
+        { q: "What encapsulates data into frames?", opts: ["Network Layer", "Physical Layer", "Data Link Layer", "Transport Layer"], ans: 2, lesson: "The Data Link layer wraps raw signals into formatted frames." },
+        { q: "Which class of IP address is used for multicasting?", opts: ["Class A", "Class B", "Class C", "Class D"], ans: 3, lesson: "Class D is strictly reserved for broadcasting to multiple unseen receivers." },
+        { q: "What is port 53 used for?", opts: ["HTTP", "DNS", "FTP", "SMTP"], ans: 1, lesson: "Port 53 continually translates human domains into cold IP addresses." },
+        { q: "What is an MTU?", opts: ["Maximum Transmission Unit", "Max Transfer Upgrade", "Multiplex Terminal Unit", "Minimum Transport Unix"], ans: 0, lesson: "MTU limits the maximum size of the nightmare payload transmitted." },
+        { q: "In TCP, what establishes the connection?", opts: ["1-way handshake", "3-way handshake", "4-way shutdown", "Ping"], ans: 1, lesson: "The 3-way handshake forces SYN, SYN-ACK, ACK before communicating." }
+    ]
+};

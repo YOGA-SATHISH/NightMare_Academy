@@ -1,0 +1,53 @@
+const osQuestions = {
+    easy: [
+        { q: "What is an Operating System?", opts: ["Hardware", "Software managing hardware", "A web browser", "A programming language"], ans: 1, lesson: "Software managing hardware, translating human intent to machine code." },
+        { q: "What does GUI stand for?", opts: ["General User Interface", "Graphical User Interface", "Global User Index", "Graphic Unix Interface"], ans: 1, lesson: "Graphical User Interface hides the cold terminal beneath pretty pictures." },
+        { q: "What is a Process?", opts: ["A program in execution", "A saved file", "A network packet", "A hard drive"], ans: 0, lesson: "A program running, consuming CPU cycles and memory." },
+        { q: "Which of the following is an Operating System?", opts: ["Microsoft Word", "Linux", "Google Chrome", "Intel"], ans: 1, lesson: "Linux is open-source salvation... or a cursed abyss of terminals." },
+        { q: "What is the core of the OS called?", opts: ["Shell", "Kernel", "Terminal", "GUI"], ans: 1, lesson: "The Kernel dictates all." },
+        { q: "Which key combination typically reboots a frozen Windows system?", opts: ["Alt + F4", "Ctrl + Shift + Esc", "Ctrl + Alt + Delete", "Win + R"], ans: 2, lesson: "Ctrl+Alt+Delete summons the final authority over frozen processes." },
+        { q: "What is the main function of a CPU?", opts: ["To store data permanently", "To execute instructions", "To cooler the case", "To display graphics"], ans: 1, lesson: "The CPU flawlessly executes your agonizing commands." },
+        { q: "Which command lists files in Unix?", opts: ["dir", "list", "ls", "show"], ans: 2, lesson: "'ls' reveals the hidden contents of the directory." },
+        { q: "What is Virtual Memory?", opts: ["RAM", "ROM", "Using disk space as extended RAM", "Cloud storage"], ans: 2, lesson: "Faking RAM by swapping idle memory to the sluggish disk." },
+        { q: "What manages the communication between hardware and OS?", opts: ["Shell", "Device Driver", "File System", "BIOS"], ans: 1, lesson: "Drivers act as interpreters for alien hardware commands." },
+        { q: "What defines the hierarchy of files in an OS?", opts: ["File System", "Kernel", "Shell", "Driver"], ans: 0, lesson: "The File System structures the tangled web of data." },
+        { q: "Which OS is developed by Apple?", opts: ["Windows", "macOS", "Linux", "Android"], ans: 1, lesson: "macOS dictates control within a closed, beautiful ecosystem." },
+        { q: "What type of memory is volatile?", opts: ["Hard Drive", "SSD", "RAM", "ROM"], ans: 2, lesson: "RAM forgets everything when power is severed." },
+        { q: "What does BIOS stand for?", opts: ["Basic Input Output System", "Binary Internal OS", "Boot Initialization Operating System", "Base Integrated Operating System"], ans: 0, lesson: "BIOS is the first code executed the moment life enters the board." },
+        { q: "Which file extension is a Windows executable?", opts: [".txt", ".exe", ".sh", ".dmg"], ans: 1, lesson: ".exe unleashes the program into execution." }
+    ],
+    medium: [
+        { q: "What creates a process in Unix?", opts: ["create()", "fork()", "exec()", "spawn()"], ans: 1, lesson: "fork() splits the process in two, creating a cloned child." },
+        { q: "What replaces a process's memory space?", opts: ["fork()", "replace()", "exec()", "kill()"], ans: 2, lesson: "exec() completely overwrites the process's mind." },
+        { q: "What is a Deadlock?", opts: ["A fast lock", "Two processes waiting on each other forever", "A sudden crash", "A reboot"], ans: 1, lesson: "Two entities holding each other's salvation, frozen until death." },
+        { q: "What mechanism is used to synchronize processes?", opts: ["Pointers", "Semaphores", "Registers", "Variables"], ans: 1, lesson: "Semaphores signal green or red, halting the rush to the critical section." },
+        { q: "What is Thrashing?", opts: ["High CPU usage", "High network usage", "OS continuously swapping pages instead of executing", "Beating the keyboard"], ans: 2, lesson: "The OS thrashes, violently moving pages in and out of memory but making no progress." },
+        { q: "What is Context Switching?", opts: ["Changing keyboards", "Switching CPU from one process to another", "Changing monitors", "Rebooting"], ans: 1, lesson: "The CPU halts one mind, saves its state, and restores another." },
+        { q: "Which is a preemptive scheduling algorithm?", opts: ["FCFS", "SJF", "Round Robin", "None"], ans: 2, lesson: "Round Robin forces processes to take turns, interrupting them brutally." },
+        { q: "What is a thread?", opts: ["A string", "A lightweight process", "A cable", "A virus"], ans: 1, lesson: "A lightweight process, sharing the same memory space as its siblings." },
+        { q: "What is a Page Fault?", opts: ["Broken RAM", "Process requiring memory page not currently in RAM", "Hardware defect", "Network error"], ans: 1, lesson: "A page fault halts execution to drag the missing memory from the hard drive." },
+        { q: "What handles the interface between the user and the kernel?", opts: ["Hardware", "Shell", "Driver", "Motherboard"], ans: 1, lesson: "The Shell waits silently for human text commands." },
+        { q: "Which command changes file permissions in Unix?", opts: ["chown", "passwd", "chmod", "sh"], ans: 2, lesson: "chmod alters the security layers of the file." },
+        { q: "What is a GUI lacking compared to a CLI?", opts: ["Colors", "Ease of Use", "Fine-grain scriptable control", "Visuals"], ans: 2, lesson: "A Command Line Interface allows for ruthless, automated scripting." },
+        { q: "What is Spooling?", opts: ["Spinning disks", "Storing data temporarily in a buffer to be used by a device", "Network sharing", "Memory clearing"], ans: 1, lesson: "Spooling keeps data in purgatory until the slow printer can consume it." },
+        { q: "What does multitasking mean for an OS?", opts: ["Many users login", "Many processors are used", "Executing multiple processes concurrently", "Nothing"], ans: 2, lesson: "It simulates running multiple applications by rapidly switching attention." },
+        { q: "What is the purpose of the 'kill' command?", opts: ["Deletes a file", "Sends a signal to terminate a process", "Reboots system", "Formats hard drive"], ans: 1, lesson: "'kill' dispatches a deadly signal to force a program to die." }
+    ],
+    hard: [
+        { q: "In Deadlock avoidance, what is the Banker's Algorithm?", opts: ["Allocates maximum resources", "Never allocates", "Allocates resources only if it leaves system in Safe State", "Kills processes randomly"], ans: 2, lesson: "Banker's Algorithm strictly denies resources if it senses impending doom." },
+        { q: "What is a Zombie Process?", opts: ["A virus", "A process that terminated but still holds an entry in the process table", "A daemon", "Background task"], ans: 1, lesson: "A Zombie process is dead, yet refuses to release its slot in the table." },
+        { q: "What is Demand Paging?", opts: ["Loading all pages at start", "Bringing a page into memory only when needed", "Deleting pages", "Page tracking"], ans: 1, lesson: "Demand Paging waits until the absolute last millisecond before fetching data." },
+        { q: "What does the 'nice' command do in Unix?", opts: ["Prints nicely", "Changes the priority of a process", "Says hello", "Cleans the terminal"], ans: 1, lesson: "'nice' alters scheduling priority, letting other processes jump ahead." },
+        { q: "Which of the following causes internal fragmentation?", opts: ["Segmentation", "Paging", "Linked lists", "Registers"], ans: 1, lesson: "Paging divides memory rigidly, trapping empty space within the final page." },
+        { q: "What is Belady’s Anomaly?", opts: ["System crash during boot", "Adding more frames increases page faults in FIFO", "Kernel panic", "Hardware limitation"], ans: 1, lesson: "Adding MORE memory actually CAUSES more errors... a terrifying paradox." },
+        { q: "What is an Orphan Process?", opts: ["No children", "A process whose parent has terminated", "A daemon", "A thread"], ans: 1, lesson: "An Orphan process is abandoned by its creator, to be adopted by 'init'." },
+        { q: "What does 'sed' do in Unix?", opts: ["Searches entirely", "Stream Editor for filtering and transforming text", "Sends packets", "Sorts data"], ans: 1, lesson: "sed manipulates text dynamically as it streams past." },
+        { q: "In inode-based file systems, where is the file name stored?", opts: ["In the inode", "In the superblock", "In the directory entry", "In the data block"], ans: 2, lesson: "The name lives only in the directory, disconnected from the inode soul." },
+        { q: "What is the primary role of a bootloader?", opts: ["Run programs", "Load the kernel into memory", "Manage users", "Scan viruses"], ans: 1, lesson: "The Bootloader's solo purpose is to drag the kernel into existence." },
+        { q: "What is a Race Condition?", opts: ["Games", "When output depends on sequence/timing of uncontrollable events", "High CPU speed", "Network collisions"], ans: 1, lesson: "A Race Condition thrives on chaotic timing, altering data randomly." },
+        { q: "What translates virtual addresses to physical ones?", opts: ["CPU", "Cache", "MMU", "ALU"], ans: 2, lesson: "The Memory Management Unit maps the illusion to the physical silicon." },
+        { q: "Which system call creates a new directory in Unix?", opts: ["rmdir", "chdir", "mkdir", "open"], ans: 2, lesson: "mkdir forces a new empty void into the file system." },
+        { q: "What is the Swapper in Unix?", opts: ["Moves processes between RAM and disk", "Swaps variables", "Changes permissions", "Network routing"], ans: 0, lesson: "The Swapper physically drags frozen processes back and forth from the drive." },
+        { q: "What does chmod 777 mean?", opts: ["Execute only", "Read only", "Total chaos; everyone can read, write, and execute", "Admin only"], ans: 2, lesson: "777 leaves the file completely defenseless to all attackers." }
+    ]
+};

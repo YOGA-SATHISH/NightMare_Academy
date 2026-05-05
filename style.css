@@ -1,0 +1,387 @@
+:root {
+    --bg-dark: #2a2d34;
+    --blood-red: #8a0303;
+    --sickly-green: #2e4a2e;
+    --ghost-white: rgba(255, 255, 255, 0.7);
+    --text-glow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    color: #ddd;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+/* Background Noise */
+#noise-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+    opacity: 0.05;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#bg-video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+#vignette {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle, transparent 30%, rgba(5,0,0,0.95) 100%);
+    box-shadow: inset 0 0 100px rgba(0,0,0,0.9);
+    z-index: 998;
+    pointer-events: none;
+}
+
+/* Enhanced Background Effects */
+#fog-layer {
+    position: fixed;
+    top: 0; left: -100vw; width: 300vw; height: 100vh;
+    background: transparent url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Clouds.jpg') repeat-x;
+    background-size: cover;
+    opacity: 0.25;
+    mix-blend-mode: color-burn;
+    filter: sepia(100%) hue-rotate(100deg) blur(5px);
+    z-index: 0;
+    pointer-events: none;
+    animation: fogDrift 60s linear infinite;
+}
+
+@keyframes fogDrift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100vw); }
+}
+
+#souls-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.soul {
+    position: absolute;
+    bottom: -50px;
+    width: 5px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(100, 255, 100, 0.6);
+    box-shadow: 0 0 15px 5px rgba(50, 200, 50, 0.8);
+    filter: blur(2px);
+    opacity: 0;
+    animation: soulFloat 5s ease-in infinite;
+}
+
+@keyframes soulFloat {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+}
+
+#app-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out;
+}
+
+.screen.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Fonts */
+.glitch {
+    font-family: 'Nosifer', cursive;
+    color: var(--blood-red);
+    font-size: 4rem;
+    position: relative;
+    text-shadow: 2px 2px 5px black;
+    animation: pulseGlow 2s infinite;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-family: 'Creepster', cursive;
+    font-size: 2rem;
+    color: #555;
+    letter-spacing: 5px;
+    margin-bottom: 2rem;
+}
+
+.blood-text {
+    font-family: 'Creepster', cursive;
+    color: var(--blood-red);
+    font-size: 3rem;
+    text-shadow: var(--text-glow);
+}
+
+.spooky-text {
+    font-family: 'Jolly Lodger', cursive;
+    color: var(--ghost-white);
+    font-size: 2.5rem;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+/* Buttons */
+.blood-btn {
+    background: rgba(138, 3, 3, 0.2);
+    border: 2px solid #ff3333;
+    color: #ffdddd;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.blood-btn:hover {
+    background: var(--blood-red);
+    color: #fff;
+    box-shadow: 0 0 15px #ff3333;
+}
+
+/* Ghost Images */
+.ghost-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: grayscale(50%) contrast(120%) brightness(90%) drop-shadow(0 0 20px var(--sickly-green));
+    animation: float 4s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+.ghost-img.angry {
+    width: 120px;
+    height: 120px;
+    filter: invert(100%) hue-rotate(180deg) drop-shadow(0 0 40px red);
+    animation: shake 0.5s infinite;
+}
+
+.ghost-bg {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+    opacity: 0.4;
+    filter: grayscale(50%) blur(1px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: breathes 6s infinite alternate;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0px); opacity: 0.8; }
+    50% { transform: translateY(-20px); opacity: 1; }
+    100% { transform: translateY(0px); opacity: 0.8; }
+}
+
+@keyframes breathes {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.25; }
+}
+
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 5px red; }
+    50% { text-shadow: 0 0 20px red, 0 0 30px darkred; }
+    100% { text-shadow: 0 0 5px red; }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* Quiz UI */
+.hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 0, 0, 0.95);
+    border-bottom: 2px solid var(--blood-red);
+    box-shadow: 0 5px 15px rgba(138, 3, 3, 0.4);
+    font-family: 'Creepster', cursive;
+    font-size: 2.2rem;
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+    z-index: 1000;
+}
+
+#lives-display {
+    color: #ff3333;
+    text-shadow: 0 0 10px #ff0000, 2px 2px 5px #000;
+}
+
+/* Puzzle UI */
+.puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 2px;
+    background: #111;
+    padding: 5px;
+    border: 2px solid var(--blood-red);
+    box-shadow: 0 0 20px var(--blood-red);
+    margin: 0;
+}
+
+.puzzle-tile {
+    width: 100px;
+    height: 100px;
+    background-size: 300px 300px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.puzzle-tile:hover {
+    transform: scale(1.05);
+    z-index: 10;
+    box-shadow: 0 0 10px white;
+}
+
+.quiz-container {
+    width: 80%;
+    max-width: 800px;
+    background: rgba(10, 0, 0, 0.8);
+    border: 1px solid var(--blood-red);
+    border-radius: 5px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(138, 3, 3, 0.4);
+}
+
+.question-box {
+    background: rgba(0,0,0,0.85); /* Readability over video */
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.option-btn {
+    background: rgba(0,0,0,0.85); /* High contrast */
+    border: 1px solid #444;
+    color: #ccc;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option-btn:hover {
+    background: #222;
+    border-color: var(--sickly-green);
+    color: #fff;
+    box-shadow: 0 0 10px var(--sickly-green);
+}
+
+/* Jump Scare */
+#scare-screen {
+    background: black;
+    z-index: 1000;
+}
+
+.scare-face {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/The_Ghost.jpg/800px-The_Ghost.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: contrast(200%) brightness(150%) hue-rotate(10deg);
+    animation: flash 0.1s infinite;
+}
+
+@keyframes flash {
+    0% { filter: invert(0%); }
+    50% { filter: invert(100%); }
+}
+
+/* Lesson Box Overlay */
+.lesson-box {
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    border: 1px solid var(--blood-red);
+    border-radius: 5px;
+    margin: 10px auto;
+    max-width: 600px;
+}
